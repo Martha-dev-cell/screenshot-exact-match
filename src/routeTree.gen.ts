@@ -19,6 +19,8 @@ import { Route as GaleriRouteImport } from './routes/galeri'
 import { Route as KegiatanRouteImport } from './routes/kegiatan'
 import { Route as KeuanganRouteImport } from './routes/keuangan'
 import { Route as KontakRouteImport } from './routes/kontak'
+import { Route as LupaPasswordRouteImport } from './routes/lupa-password'
+import { Route as MasukRouteImport } from './routes/masuk'
 import { Route as PerangkatAjarRouteImport } from './routes/perangkat-ajar'
 import { Route as ProfilRouteImport } from './routes/profil'
 
@@ -72,6 +74,16 @@ const KontakRoute = KontakRouteImport.update({
   path: '/kontak',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LupaPasswordRoute = LupaPasswordRouteImport.update({
+  id: '/lupa-password',
+  path: '/lupa-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MasukRoute = MasukRouteImport.update({
+  id: '/masuk',
+  path: '/masuk',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PerangkatAjarRoute = PerangkatAjarRouteImport.update({
   id: '/perangkat-ajar',
   path: '/perangkat-ajar',
@@ -94,6 +106,8 @@ export interface FileRoutesByFullPath {
   '/kegiatan': typeof KegiatanRoute
   '/keuangan': typeof KeuanganRoute
   '/kontak': typeof KontakRoute
+  '/lupa-password': typeof LupaPasswordRoute
+  '/masuk': typeof MasukRoute
   '/perangkat-ajar': typeof PerangkatAjarRoute
   '/profil': typeof ProfilRoute
 }
@@ -108,6 +122,8 @@ export interface FileRoutesByTo {
   '/kegiatan': typeof KegiatanRoute
   '/keuangan': typeof KeuanganRoute
   '/kontak': typeof KontakRoute
+  '/lupa-password': typeof LupaPasswordRoute
+  '/masuk': typeof MasukRoute
   '/perangkat-ajar': typeof PerangkatAjarRoute
   '/profil': typeof ProfilRoute
 }
@@ -123,6 +139,8 @@ export interface FileRoutesById {
   '/kegiatan': typeof KegiatanRoute
   '/keuangan': typeof KeuanganRoute
   '/kontak': typeof KontakRoute
+  '/lupa-password': typeof LupaPasswordRoute
+  '/masuk': typeof MasukRoute
   '/perangkat-ajar': typeof PerangkatAjarRoute
   '/profil': typeof ProfilRoute
 }
@@ -139,6 +157,8 @@ export interface FileRouteTypes {
     | '/kegiatan'
     | '/keuangan'
     | '/kontak'
+    | '/lupa-password'
+    | '/masuk'
     | '/perangkat-ajar'
     | '/profil'
   fileRoutesByTo: FileRoutesByTo
@@ -153,6 +173,8 @@ export interface FileRouteTypes {
     | '/kegiatan'
     | '/keuangan'
     | '/kontak'
+    | '/lupa-password'
+    | '/masuk'
     | '/perangkat-ajar'
     | '/profil'
   id:
@@ -167,6 +189,8 @@ export interface FileRouteTypes {
     | '/kegiatan'
     | '/keuangan'
     | '/kontak'
+    | '/lupa-password'
+    | '/masuk'
     | '/perangkat-ajar'
     | '/profil'
   fileRoutesById: FileRoutesById
@@ -182,6 +206,8 @@ export interface RootRouteChildren {
   KegiatanRoute: typeof KegiatanRoute
   KeuanganRoute: typeof KeuanganRoute
   KontakRoute: typeof KontakRoute
+  LupaPasswordRoute: typeof LupaPasswordRoute
+  MasukRoute: typeof MasukRoute
   PerangkatAjarRoute: typeof PerangkatAjarRoute
   ProfilRoute: typeof ProfilRoute
 }
@@ -258,6 +284,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KontakRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lupa-password': {
+      id: '/lupa-password'
+      path: '/lupa-password'
+      fullPath: '/lupa-password'
+      preLoaderRoute: typeof LupaPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/masuk': {
+      id: '/masuk'
+      path: '/masuk'
+      fullPath: '/masuk'
+      preLoaderRoute: typeof MasukRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/perangkat-ajar': {
       id: '/perangkat-ajar'
       path: '/perangkat-ajar'
@@ -286,6 +326,8 @@ const rootRouteChildren: RootRouteChildren = {
   KegiatanRoute: KegiatanRoute,
   KeuanganRoute: KeuanganRoute,
   KontakRoute: KontakRoute,
+  LupaPasswordRoute: LupaPasswordRoute,
+  MasukRoute: MasukRoute,
   PerangkatAjarRoute: PerangkatAjarRoute,
   ProfilRoute: ProfilRoute,
 }
