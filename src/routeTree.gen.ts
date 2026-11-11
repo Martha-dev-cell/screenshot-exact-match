@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdministrasiRouteImport } from './routes/administrasi'
+import { Route as AnggotaRouteImport } from './routes/anggota'
+import { Route as AspirasiRouteImport } from './routes/aspirasi'
+import { Route as BeritaRouteImport } from './routes/berita'
+import { Route as ForumRouteImport } from './routes/forum'
+import { Route as GaleriRouteImport } from './routes/galeri'
+import { Route as KegiatanRouteImport } from './routes/kegiatan'
+import { Route as KeuanganRouteImport } from './routes/keuangan'
+import { Route as KontakRouteImport } from './routes/kontak'
+import { Route as PerangkatAjarRouteImport } from './routes/perangkat-ajar'
+import { Route as ProfilRouteImport } from './routes/profil'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdministrasiRoute = AdministrasiRouteImport.update({
+  id: '/administrasi',
+  path: '/administrasi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnggotaRoute = AnggotaRouteImport.update({
+  id: '/anggota',
+  path: '/anggota',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AspirasiRoute = AspirasiRouteImport.update({
+  id: '/aspirasi',
+  path: '/aspirasi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeritaRoute = BeritaRouteImport.update({
+  id: '/berita',
+  path: '/berita',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForumRoute = ForumRouteImport.update({
+  id: '/forum',
+  path: '/forum',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriRoute = GaleriRouteImport.update({
+  id: '/galeri',
+  path: '/galeri',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KegiatanRoute = KegiatanRouteImport.update({
+  id: '/kegiatan',
+  path: '/kegiatan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KeuanganRoute = KeuanganRouteImport.update({
+  id: '/keuangan',
+  path: '/keuangan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontakRoute = KontakRouteImport.update({
+  id: '/kontak',
+  path: '/kontak',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PerangkatAjarRoute = PerangkatAjarRouteImport.update({
+  id: '/perangkat-ajar',
+  path: '/perangkat-ajar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfilRoute = ProfilRouteImport.update({
+  id: '/profil',
+  path: '/profil',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/administrasi': typeof AdministrasiRoute
+  '/anggota': typeof AnggotaRoute
+  '/aspirasi': typeof AspirasiRoute
+  '/berita': typeof BeritaRoute
+  '/forum': typeof ForumRoute
+  '/galeri': typeof GaleriRoute
+  '/kegiatan': typeof KegiatanRoute
+  '/keuangan': typeof KeuanganRoute
+  '/kontak': typeof KontakRoute
+  '/perangkat-ajar': typeof PerangkatAjarRoute
+  '/profil': typeof ProfilRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/administrasi': typeof AdministrasiRoute
+  '/anggota': typeof AnggotaRoute
+  '/aspirasi': typeof AspirasiRoute
+  '/berita': typeof BeritaRoute
+  '/forum': typeof ForumRoute
+  '/galeri': typeof GaleriRoute
+  '/kegiatan': typeof KegiatanRoute
+  '/keuangan': typeof KeuanganRoute
+  '/kontak': typeof KontakRoute
+  '/perangkat-ajar': typeof PerangkatAjarRoute
+  '/profil': typeof ProfilRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/administrasi': typeof AdministrasiRoute
+  '/anggota': typeof AnggotaRoute
+  '/aspirasi': typeof AspirasiRoute
+  '/berita': typeof BeritaRoute
+  '/forum': typeof ForumRoute
+  '/galeri': typeof GaleriRoute
+  '/kegiatan': typeof KegiatanRoute
+  '/keuangan': typeof KeuanganRoute
+  '/kontak': typeof KontakRoute
+  '/perangkat-ajar': typeof PerangkatAjarRoute
+  '/profil': typeof ProfilRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/administrasi'
+    | '/anggota'
+    | '/aspirasi'
+    | '/berita'
+    | '/forum'
+    | '/galeri'
+    | '/kegiatan'
+    | '/keuangan'
+    | '/kontak'
+    | '/perangkat-ajar'
+    | '/profil'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/administrasi'
+    | '/anggota'
+    | '/aspirasi'
+    | '/berita'
+    | '/forum'
+    | '/galeri'
+    | '/kegiatan'
+    | '/keuangan'
+    | '/kontak'
+    | '/perangkat-ajar'
+    | '/profil'
+  id:
+    | '__root__'
+    | '/'
+    | '/administrasi'
+    | '/anggota'
+    | '/aspirasi'
+    | '/berita'
+    | '/forum'
+    | '/galeri'
+    | '/kegiatan'
+    | '/keuangan'
+    | '/kontak'
+    | '/perangkat-ajar'
+    | '/profil'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdministrasiRoute: typeof AdministrasiRoute
+  AnggotaRoute: typeof AnggotaRoute
+  AspirasiRoute: typeof AspirasiRoute
+  BeritaRoute: typeof BeritaRoute
+  ForumRoute: typeof ForumRoute
+  GaleriRoute: typeof GaleriRoute
+  KegiatanRoute: typeof KegiatanRoute
+  KeuanganRoute: typeof KeuanganRoute
+  KontakRoute: typeof KontakRoute
+  PerangkatAjarRoute: typeof PerangkatAjarRoute
+  ProfilRoute: typeof ProfilRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/administrasi': {
+      id: '/administrasi'
+      path: '/administrasi'
+      fullPath: '/administrasi'
+      preLoaderRoute: typeof AdministrasiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/anggota': {
+      id: '/anggota'
+      path: '/anggota'
+      fullPath: '/anggota'
+      preLoaderRoute: typeof AnggotaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/aspirasi': {
+      id: '/aspirasi'
+      path: '/aspirasi'
+      fullPath: '/aspirasi'
+      preLoaderRoute: typeof AspirasiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/berita': {
+      id: '/berita'
+      path: '/berita'
+      fullPath: '/berita'
+      preLoaderRoute: typeof BeritaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forum': {
+      id: '/forum'
+      path: '/forum'
+      fullPath: '/forum'
+      preLoaderRoute: typeof ForumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeri': {
+      id: '/galeri'
+      path: '/galeri'
+      fullPath: '/galeri'
+      preLoaderRoute: typeof GaleriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kegiatan': {
+      id: '/kegiatan'
+      path: '/kegiatan'
+      fullPath: '/kegiatan'
+      preLoaderRoute: typeof KegiatanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/keuangan': {
+      id: '/keuangan'
+      path: '/keuangan'
+      fullPath: '/keuangan'
+      preLoaderRoute: typeof KeuanganRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontak': {
+      id: '/kontak'
+      path: '/kontak'
+      fullPath: '/kontak'
+      preLoaderRoute: typeof KontakRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/perangkat-ajar': {
+      id: '/perangkat-ajar'
+      path: '/perangkat-ajar'
+      fullPath: '/perangkat-ajar'
+      preLoaderRoute: typeof PerangkatAjarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profil': {
+      id: '/profil'
+      path: '/profil'
+      fullPath: '/profil'
+      preLoaderRoute: typeof ProfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdministrasiRoute: AdministrasiRoute,
+  AnggotaRoute: AnggotaRoute,
+  AspirasiRoute: AspirasiRoute,
+  BeritaRoute: BeritaRoute,
+  ForumRoute: ForumRoute,
+  GaleriRoute: GaleriRoute,
+  KegiatanRoute: KegiatanRoute,
+  KeuanganRoute: KeuanganRoute,
+  KontakRoute: KontakRoute,
+  PerangkatAjarRoute: PerangkatAjarRoute,
+  ProfilRoute: ProfilRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
