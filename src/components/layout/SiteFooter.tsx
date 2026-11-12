@@ -56,7 +56,9 @@ export function SiteFooter() {
 function FooterColumn({ title, items }: { title: string; items: typeof mainNav }) {
   return (
     <div>
-      <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-navy-foreground">{title}</h3>
+      <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.14em] text-navy-foreground">
+        {title}
+      </h3>
       <ul className="space-y-2.5 text-sm">
         {items.map((item) => (
           <li key={item.to}>

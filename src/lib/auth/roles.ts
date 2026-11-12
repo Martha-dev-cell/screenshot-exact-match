@@ -105,32 +105,162 @@ export interface DashboardModule {
 }
 
 export const MODULES: Record<ModuleId, DashboardModule> = {
-  site_stats: { id: "site_stats", title: "Statistik Website", description: "Ringkasan anggota, kunjungan, dokumen, dan aktivitas portal.", icon: BarChart3 },
-  manage_users: { id: "manage_users", title: "Manajemen Akun Pengguna", description: "Buat, nonaktifkan, dan atur peran akun pengguna.", icon: UserCog },
-  manage_members: { id: "manage_members", title: "Manajemen Anggota", description: "Kelola data guru dan sekolah anggota gugus.", icon: Users },
-  manage_board: { id: "manage_board", title: "Manajemen Pengurus", description: "Atur susunan dan masa bakti pengurus KKG.", icon: Landmark },
-  manage_news: { id: "manage_news", title: "Berita & Pengumuman", description: "Tulis, jadwalkan, dan terbitkan informasi resmi.", icon: Newspaper },
-  manage_forum: { id: "manage_forum", title: "Manajemen Forum", description: "Moderasi topik, kategori, dan balasan diskusi.", icon: MessagesSquare },
-  manage_documents: { id: "manage_documents", title: "Manajemen Dokumen", description: "Verifikasi dan kelola bank perangkat ajar.", icon: FolderCog },
-  manage_activities: { id: "manage_activities", title: "Manajemen Kegiatan", description: "Susun program kerja dan agenda kegiatan.", icon: CalendarDays },
-  manage_finance: { id: "manage_finance", title: "Manajemen Keuangan", description: "Pantau kas, iuran, dan laporan keuangan.", icon: Wallet },
-  site_settings: { id: "site_settings", title: "Pengaturan Website", description: "Identitas, logo, menu, dan konfigurasi portal.", icon: Settings },
-  attendance_manage: { id: "attendance_manage", title: "Kelola Presensi", description: "Buka sesi presensi dan rekap kehadiran kegiatan.", icon: ClipboardCheck },
-  administration: { id: "administration", title: "Administrasi KKG", description: "Surat masuk/keluar, notulen, dan arsip organisasi.", icon: ClipboardList },
-  aspiration_inbox: { id: "aspiration_inbox", title: "Kotak Aspirasi", description: "Tinjau dan tindak lanjuti aspirasi anggota.", icon: Lightbulb },
-  cash_summary: { id: "cash_summary", title: "Ringkasan Kas", description: "Posisi saldo dan arus kas terkini.", icon: BarChart3 },
-  income: { id: "income", title: "Pemasukan", description: "Catat iuran, bantuan, dan pemasukan lain.", icon: Receipt },
-  expenses: { id: "expenses", title: "Pengeluaran", description: "Catat belanja kegiatan beserta bukti transaksi.", icon: Receipt },
-  dues: { id: "dues", title: "Iuran Anggota", description: "Pantau status iuran setiap anggota.", icon: BadgeCheck },
-  finance_reports: { id: "finance_reports", title: "Laporan & Publikasi", description: "Susun laporan periodik dan publikasikan ke anggota.", icon: FileBarChart },
-  my_profile: { id: "my_profile", title: "Profil Pribadi", description: "Data diri, sekolah, dan kelas yang diampu.", icon: UserCircle },
-  forum: { id: "forum", title: "Forum Diskusi", description: "Ikuti diskusi dan berbagi praktik baik.", icon: MessagesSquare },
-  teaching_materials: { id: "teaching_materials", title: "Perangkat Ajar", description: "Unggah dan unduh modul ajar, ATP, dan asesmen.", icon: BookOpenCheck },
-  activity_info: { id: "activity_info", title: "Informasi Kegiatan", description: "Agenda kegiatan KKG yang akan datang.", icon: CalendarDays },
-  attendance: { id: "attendance", title: "Presensi Kegiatan", description: "Isi kehadiran pada kegiatan yang sedang berlangsung.", icon: CalendarCheck2 },
-  aspiration_submit: { id: "aspiration_submit", title: "Aspirasi & Saran", description: "Sampaikan ide dan masukan untuk KKG.", icon: Lightbulb },
-  activity_history: { id: "activity_history", title: "Riwayat Kegiatan", description: "Daftar kegiatan yang pernah Anda ikuti.", icon: History },
-  published_finance: { id: "published_finance", title: "Laporan Keuangan", description: "Laporan keuangan yang telah dipublikasikan.", icon: Wallet },
+  site_stats: {
+    id: "site_stats",
+    title: "Statistik Website",
+    description: "Ringkasan anggota, kunjungan, dokumen, dan aktivitas portal.",
+    icon: BarChart3,
+  },
+  manage_users: {
+    id: "manage_users",
+    title: "Manajemen Akun Pengguna",
+    description: "Buat, nonaktifkan, dan atur peran akun pengguna.",
+    icon: UserCog,
+  },
+  manage_members: {
+    id: "manage_members",
+    title: "Manajemen Anggota",
+    description: "Kelola data guru dan sekolah anggota gugus.",
+    icon: Users,
+  },
+  manage_board: {
+    id: "manage_board",
+    title: "Manajemen Pengurus",
+    description: "Atur susunan dan masa bakti pengurus KKG.",
+    icon: Landmark,
+  },
+  manage_news: {
+    id: "manage_news",
+    title: "Berita & Pengumuman",
+    description: "Tulis, jadwalkan, dan terbitkan informasi resmi.",
+    icon: Newspaper,
+  },
+  manage_forum: {
+    id: "manage_forum",
+    title: "Manajemen Forum",
+    description: "Moderasi topik, kategori, dan balasan diskusi.",
+    icon: MessagesSquare,
+  },
+  manage_documents: {
+    id: "manage_documents",
+    title: "Manajemen Dokumen",
+    description: "Verifikasi dan kelola bank perangkat ajar.",
+    icon: FolderCog,
+  },
+  manage_activities: {
+    id: "manage_activities",
+    title: "Manajemen Kegiatan",
+    description: "Susun program kerja dan agenda kegiatan.",
+    icon: CalendarDays,
+  },
+  manage_finance: {
+    id: "manage_finance",
+    title: "Manajemen Keuangan",
+    description: "Pantau kas, iuran, dan laporan keuangan.",
+    icon: Wallet,
+  },
+  site_settings: {
+    id: "site_settings",
+    title: "Pengaturan Website",
+    description: "Identitas, logo, menu, dan konfigurasi portal.",
+    icon: Settings,
+  },
+  attendance_manage: {
+    id: "attendance_manage",
+    title: "Kelola Presensi",
+    description: "Buka sesi presensi dan rekap kehadiran kegiatan.",
+    icon: ClipboardCheck,
+  },
+  administration: {
+    id: "administration",
+    title: "Administrasi KKG",
+    description: "Surat masuk/keluar, notulen, dan arsip organisasi.",
+    icon: ClipboardList,
+  },
+  aspiration_inbox: {
+    id: "aspiration_inbox",
+    title: "Kotak Aspirasi",
+    description: "Tinjau dan tindak lanjuti aspirasi anggota.",
+    icon: Lightbulb,
+  },
+  cash_summary: {
+    id: "cash_summary",
+    title: "Ringkasan Kas",
+    description: "Posisi saldo dan arus kas terkini.",
+    icon: BarChart3,
+  },
+  income: {
+    id: "income",
+    title: "Pemasukan",
+    description: "Catat iuran, bantuan, dan pemasukan lain.",
+    icon: Receipt,
+  },
+  expenses: {
+    id: "expenses",
+    title: "Pengeluaran",
+    description: "Catat belanja kegiatan beserta bukti transaksi.",
+    icon: Receipt,
+  },
+  dues: {
+    id: "dues",
+    title: "Iuran Anggota",
+    description: "Pantau status iuran setiap anggota.",
+    icon: BadgeCheck,
+  },
+  finance_reports: {
+    id: "finance_reports",
+    title: "Laporan & Publikasi",
+    description: "Susun laporan periodik dan publikasikan ke anggota.",
+    icon: FileBarChart,
+  },
+  my_profile: {
+    id: "my_profile",
+    title: "Profil Pribadi",
+    description: "Data diri, sekolah, dan kelas yang diampu.",
+    icon: UserCircle,
+  },
+  forum: {
+    id: "forum",
+    title: "Forum Diskusi",
+    description: "Ikuti diskusi dan berbagi praktik baik.",
+    icon: MessagesSquare,
+  },
+  teaching_materials: {
+    id: "teaching_materials",
+    title: "Perangkat Ajar",
+    description: "Unggah dan unduh modul ajar, ATP, dan asesmen.",
+    icon: BookOpenCheck,
+  },
+  activity_info: {
+    id: "activity_info",
+    title: "Informasi Kegiatan",
+    description: "Agenda kegiatan KKG yang akan datang.",
+    icon: CalendarDays,
+  },
+  attendance: {
+    id: "attendance",
+    title: "Presensi Kegiatan",
+    description: "Isi kehadiran pada kegiatan yang sedang berlangsung.",
+    icon: CalendarCheck2,
+  },
+  aspiration_submit: {
+    id: "aspiration_submit",
+    title: "Aspirasi & Saran",
+    description: "Sampaikan ide dan masukan untuk KKG.",
+    icon: Lightbulb,
+  },
+  activity_history: {
+    id: "activity_history",
+    title: "Riwayat Kegiatan",
+    description: "Daftar kegiatan yang pernah Anda ikuti.",
+    icon: History,
+  },
+  published_finance: {
+    id: "published_finance",
+    title: "Laporan Keuangan",
+    description: "Laporan keuangan yang telah dipublikasikan.",
+    icon: Wallet,
+  },
 };
 
 /** Modul yang tampil di dashboard tiap peran. */
@@ -184,6 +314,16 @@ export function canAccess(role: Role, moduleId: ModuleId): boolean {
 
 export function modulesFor(role: Role): DashboardModule[] {
   return ROLE_MODULES[role].map((id) => MODULES[id]);
+}
+
+/** Ubah nilai peran dari database menjadi Role; nilai tak dikenal diperlakukan sebagai anggota biasa. */
+export function parseRole(value: string | null | undefined): Role {
+  return ROLES.find((r) => r === value) ?? "anggota";
+}
+
+/** Hanya Super Admin yang boleh mengubah peran dan status akun. */
+export function canManageAccounts(role: Role): boolean {
+  return canAccess(role, "manage_users");
 }
 
 export function roleFromSlug(slug: string): Role | null {

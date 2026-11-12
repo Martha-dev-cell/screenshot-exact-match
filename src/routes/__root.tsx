@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+import { useAuthListener } from "@/hooks/use-auth";
 
 function NotFoundComponent() {
   return (
@@ -91,7 +92,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Portal Digital KKG Gugus 01 Kecamatan Bluto" },
       {
         property: "og:description",
-        content: "Pusat informasi, kolaborasi, dan pengembangan kompetensi guru KKG Gugus 01 Bluto.",
+        content:
+          "Pusat informasi, kolaborasi, dan pengembangan kompetensi guru KKG Gugus 01 Bluto.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -135,9 +137,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <AuthListener />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );
+}
+
+function AuthListener() {
+  useAuthListener();
+  return null;
 }

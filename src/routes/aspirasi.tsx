@@ -8,21 +8,41 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/aspirasi")({
-  head: () => pageHead("Aspirasi dan Saran", "Sampaikan aspirasi, ide, dan saran untuk kemajuan KKG Gugus 01 Kecamatan Bluto."),
+  head: () =>
+    pageHead(
+      "Aspirasi dan Saran",
+      "Sampaikan aspirasi, ide, dan saran untuk kemajuan KKG Gugus 01 Kecamatan Bluto.",
+    ),
   component: AspirasiPage,
 });
 
-const categories = ["Program & Kegiatan", "Pengembangan Kompetensi", "Administrasi", "Keuangan", "Portal Digital", "Lainnya"];
+const categories = [
+  "Program & Kegiatan",
+  "Pengembangan Kompetensi",
+  "Administrasi",
+  "Keuangan",
+  "Portal Digital",
+  "Lainnya",
+];
 
 function AspirasiPage() {
   return (
     <PublicLayout>
-      <PageHeader path="/aspirasi" description="Suara Anda penting. Sampaikan ide dan masukan untuk KKG yang lebih baik." />
+      <PageHeader
+        path="/aspirasi"
+        description="Suara Anda penting. Sampaikan ide dan masukan untuk KKG yang lebih baik."
+      />
       <section className="py-14">
         <div className="container-page grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           <form
@@ -61,7 +81,8 @@ function AspirasiPage() {
               </Label>
             </div>
             <IntegrationNotice>
-              Pengiriman aspirasi belum aktif. Formulir ini akan dapat dikirim setelah sistem penyimpanan terhubung.
+              Pengiriman aspirasi belum aktif. Formulir ini akan dapat dikirim setelah sistem
+              penyimpanan terhubung.
             </IntegrationNotice>
             <Button type="submit" size="lg" disabled>
               <Send /> Kirim Aspirasi
@@ -78,7 +99,8 @@ function AspirasiPage() {
             <div className="flex gap-3 rounded-xl border bg-card p-5 text-sm">
               <ShieldCheck className="size-5 shrink-0 text-gold" />
               <p className="text-muted-foreground">
-                Identitas pengirim anonim hanya dapat dilihat oleh Super Admin untuk keperluan verifikasi.
+                Identitas pengirim anonim hanya dapat dilihat oleh Super Admin untuk keperluan
+                verifikasi.
               </p>
             </div>
           </aside>

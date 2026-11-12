@@ -16,7 +16,10 @@ export function LogoMark({ className }: { className?: string }) {
         className="fill-navy stroke-gold"
         strokeWidth="3"
       />
-      <path d="m32 13 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8L32 13Z" className="fill-gold" />
+      <path
+        d="m32 13 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8L32 13Z"
+        className="fill-gold"
+      />
       <path
         d="M14 36c6-2.5 12-2.2 18 1.5 6-3.7 12-4 18-1.5v16c-6-2.5-12-2.2-18 1.5-6-3.7-12-4-18-1.5V36Z"
         className="fill-navy-foreground"
@@ -35,7 +38,13 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
-export function Logo({ tone = "default", className }: { tone?: "default" | "onNavy"; className?: string }) {
+export function Logo({
+  tone = "default",
+  className,
+}: {
+  tone?: "default" | "onNavy";
+  className?: string;
+}) {
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <LogoMark />

@@ -7,13 +7,22 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/perangkat-ajar")({
   head: () =>
-    pageHead("Bank Perangkat Ajar", "Kumpulan modul ajar, ATP, CP, asesmen, dan media pembelajaran guru KKG Gugus 01 Bluto."),
+    pageHead(
+      "Bank Perangkat Ajar",
+      "Kumpulan modul ajar, ATP, CP, asesmen, dan media pembelajaran guru KKG Gugus 01 Bluto.",
+    ),
   component: PerangkatAjarPage,
 });
 
@@ -43,13 +52,17 @@ function PerangkatAjarPage() {
       <section className="py-14">
         <div className="container-page space-y-6">
           <IntegrationNotice>
-            Unggah dan unduh dokumen akan aktif setelah penyimpanan dokumen terhubung. Hanya anggota yang masuk yang
-            dapat mengunggah.
+            Unggah dan unduh dokumen akan aktif setelah penyimpanan dokumen terhubung. Hanya anggota
+            yang masuk yang dapat mengunggah.
           </IntegrationNotice>
           <div className="flex flex-col gap-3 md:flex-row">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              <Input placeholder="Cari judul atau mata pelajaran…" className="h-11 pl-9" aria-label="Cari perangkat ajar" />
+              <Input
+                placeholder="Cari judul atau mata pelajaran…"
+                className="h-11 pl-9"
+                aria-label="Cari perangkat ajar"
+              />
             </div>
             <Select>
               <SelectTrigger className="h-11 md:w-44" aria-label="Pilih kelas">

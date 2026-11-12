@@ -1,34 +1,44 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { ArrowLeft, Mail } from "lucide-react";
+import { ArrowLeft, MailCheck, Mail } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
 import { AuthShell } from "@/components/auth/AuthShell";
-import { IntegrationNotice } from "@/components/common/IntegrationNotice";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { AuthNotConfiguredError, requestPasswordReset } from "@/lib/auth/auth-service";
+import { AuthError, requestPasswordReset } from "@/lib/auth/auth-service";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/lupa-password")({
-  head: () => pageHead("Lupa Password", "Atur ulang password akun Portal Digital KKG Gugus 01 Kecamatan Bluto."),
+  head: () =>
+    pageHead(
+      "Lupa Password",
+      "Atur ulang password akun Portal Digital KKG Gugus 01 Kecamatan Bluto.",
+    ),
   component: LupaPasswordPage,
 });
 
 function LupaPasswordPage() {
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
+    setError(null);
     if (!email.trim()) {
-      setMessage("Email wajib diisi.");
+      setError("Email wajib diisi.");
       return;
     }
+    setLoading(true);
     try {
-      await requestPasswordReset(email.trim());
+      await requestPasswordReset(email);
+      setSent(true);
     } catch (err) {
-      setMessage(err instanceof AuthNotConfiguredError ? err.message : "Permintaan gagal. Silakan coba lagi.");
+      setError(err instanceof AuthError ? err.message : "Permintaan gagal. Silakan coba lagi.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -40,18 +50,48 @@ function LupaPasswordPage() {
           Masukkan email terdaftar. Tautan atur ulang password akan dikirim ke email Anda.
         </p>
         <div className="gold-rule mt-4" />
-        <form onSubmit={onSubmit} className="mt-7 space-y-5" noValidate>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" className="h-11" placeholder="nama@email.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+        {sent ? (
+          <div
+            role="status"
+            className="mt-7 flex items-start gap-3 rounded-xl border bg-secondary px-4 py-4 text-sm"
+          >
+            <MailCheck className="mt-0.5 size-5 shrink-0 text-primary" />
+            <p className="leading-relaxed">
+              Jika email <strong>{email.trim()}</strong> terdaftar, tautan atur ulang password sudah
+              dikirim. Periksa kotak masuk atau folder spam.
+            </p>
           </div>
-          {message ? <IntegrationNotice>{message}</IntegrationNotice> : null}
-          <Button type="submit" size="lg" className="w-full">
-            <Mail /> Kirim tautan
-          </Button>
-        </form>
+        ) : (
+          <form onSubmit={onSubmit} className="mt-7 space-y-5" noValidate>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                className="h-11"
+                placeholder="nama@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            {error ? (
+              <p
+                role="alert"
+                className="rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive"
+              >
+                {error}
+              </p>
+            ) : null}
+            <Button type="submit" size="lg" className="w-full" disabled={loading}>
+              <Mail /> {loading ? "Mengirim…" : "Kirim tautan"}
+            </Button>
+          </form>
+        )}
       </div>
-      <Link to="/masuk" className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-primary">
+      <Link
+        to="/masuk"
+        className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-primary"
+      >
         <ArrowLeft className="size-4" /> Kembali ke halaman masuk
       </Link>
     </AuthShell>

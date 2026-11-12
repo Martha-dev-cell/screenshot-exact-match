@@ -8,7 +8,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/galeri")({
-  head: () => pageHead("Galeri Kegiatan", "Dokumentasi foto dan video kegiatan KKG Gugus 01 Kecamatan Bluto."),
+  head: () =>
+    pageHead(
+      "Galeri Kegiatan",
+      "Dokumentasi foto dan video kegiatan KKG Gugus 01 Kecamatan Bluto.",
+    ),
   component: GaleriPage,
 });
 
@@ -17,7 +21,10 @@ const albums = ["Semua", "Pertemuan Rutin", "Lokakarya", "Lomba", "Kunjungan"];
 function GaleriPage() {
   return (
     <PublicLayout>
-      <PageHeader path="/galeri" description="Jejak kebersamaan dan semangat belajar guru-guru Gugus 01 dalam gambar." />
+      <PageHeader
+        path="/galeri"
+        description="Jejak kebersamaan dan semangat belajar guru-guru Gugus 01 dalam gambar."
+      />
       <section className="py-14">
         <div className="container-page">
           <Tabs defaultValue="Semua">

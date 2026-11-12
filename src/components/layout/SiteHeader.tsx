@@ -1,14 +1,17 @@
 import { Link } from "@tanstack/react-router";
-import { LogIn, MapPin, Menu } from "lucide-react";
+import { LayoutDashboard, LogIn, LogOut, MapPin, Menu } from "lucide-react";
 import { useState } from "react";
 
 import { Logo } from "@/components/brand/Logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { mainNav, site } from "@/config/site";
+import { useCurrentUser, useSignOut } from "@/hooks/use-auth";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const { data: user } = useCurrentUser();
+  const signOut = useSignOut();
 
   return (
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
@@ -30,11 +33,31 @@ export function SiteHeader() {
           </Link>
 
           <div className="flex items-center gap-2">
-            <Button asChild className="hidden sm:inline-flex">
-              <Link to="/masuk">
-                <LogIn /> Masuk Portal
-              </Link>
-            </Button>
+            {user ? (
+              <>
+                <Button asChild className="hidden sm:inline-flex">
+                  <Link to="/dashboard">
+                    <LayoutDashboard /> Dashboard
+                  </Link>
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hidden sm:inline-flex"
+                  aria-label="Keluar"
+                  title="Keluar"
+                  onClick={() => void signOut()}
+                >
+                  <LogOut />
+                </Button>
+              </>
+            ) : (
+              <Button asChild className="hidden sm:inline-flex">
+                <Link to="/masuk">
+                  <LogIn /> Masuk Portal
+                </Link>
+              </Button>
+            )}
 
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
@@ -64,12 +87,32 @@ export function SiteHeader() {
                     </Link>
                   ))}
                 </nav>
-                <div className="border-t p-4">
-                  <Button asChild className="w-full">
-                    <Link to="/masuk" onClick={() => setOpen(false)}>
-                      <LogIn /> Masuk Portal
-                    </Link>
-                  </Button>
+                <div className="grid gap-2 border-t p-4">
+                  {user ? (
+                    <>
+                      <Button asChild className="w-full">
+                        <Link to="/dashboard" onClick={() => setOpen(false)}>
+                          <LayoutDashboard /> Dashboard
+                        </Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="w-full"
+                        onClick={() => {
+                          setOpen(false);
+                          void signOut();
+                        }}
+                      >
+                        <LogOut /> Keluar
+                      </Button>
+                    </>
+                  ) : (
+                    <Button asChild className="w-full">
+                      <Link to="/masuk" onClick={() => setOpen(false)}>
+                        <LogIn /> Masuk Portal
+                      </Link>
+                    </Button>
+                  )}
                 </div>
               </SheetContent>
             </Sheet>

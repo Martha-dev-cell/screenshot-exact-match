@@ -25,7 +25,9 @@ export function StatCard({
         </span>
       </div>
       <div className="mt-3 font-display text-4xl text-primary">{value ?? "—"}</div>
-      <p className="mt-1 text-xs text-muted-foreground">{hint ?? (value === null ? "Belum ada data" : "")}</p>
+      <p className="mt-1 text-xs text-muted-foreground">
+        {hint ?? (value === null ? "Belum ada data" : "")}
+      </p>
     </div>
   );
 }

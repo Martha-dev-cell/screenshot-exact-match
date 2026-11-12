@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AdministrasiRouteImport } from './routes/administrasi'
 import { Route as AnggotaRouteImport } from './routes/anggota'
 import { Route as AspirasiRouteImport } from './routes/aspirasi'
@@ -23,10 +24,19 @@ import { Route as LupaPasswordRouteImport } from './routes/lupa-password'
 import { Route as MasukRouteImport } from './routes/masuk'
 import { Route as PerangkatAjarRouteImport } from './routes/perangkat-ajar'
 import { Route as ProfilRouteImport } from './routes/profil'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthenticatedDashboardRouteRouteImport } from './routes/_authenticated/dashboard/route'
+import { Route as AuthenticatedDashboardIndexRouteImport } from './routes/_authenticated/dashboard/index'
+import { Route as AuthenticatedDashboardPenggunaRouteImport } from './routes/_authenticated/dashboard/pengguna'
+import { Route as AuthenticatedDashboardProfilRouteImport } from './routes/_authenticated/dashboard/profil'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdministrasiRoute = AdministrasiRouteImport.update({
@@ -94,6 +104,35 @@ const ProfilRoute = ProfilRouteImport.update({
   path: '/profil',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedDashboardRouteRoute =
+  AuthenticatedDashboardRouteRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedDashboardIndexRoute =
+  AuthenticatedDashboardIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedDashboardRouteRoute,
+  } as any)
+const AuthenticatedDashboardPenggunaRoute =
+  AuthenticatedDashboardPenggunaRouteImport.update({
+    id: '/pengguna',
+    path: '/pengguna',
+    getParentRoute: () => AuthenticatedDashboardRouteRoute,
+  } as any)
+const AuthenticatedDashboardProfilRoute =
+  AuthenticatedDashboardProfilRouteImport.update({
+    id: '/profil',
+    path: '/profil',
+    getParentRoute: () => AuthenticatedDashboardRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -110,6 +149,11 @@ export interface FileRoutesByFullPath {
   '/masuk': typeof MasukRoute
   '/perangkat-ajar': typeof PerangkatAjarRoute
   '/profil': typeof ProfilRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/dashboard': typeof AuthenticatedDashboardRouteRouteWithChildren
+  '/dashboard/pengguna': typeof AuthenticatedDashboardPenggunaRoute
+  '/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
+  '/dashboard/': typeof AuthenticatedDashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -126,10 +170,15 @@ export interface FileRoutesByTo {
   '/masuk': typeof MasukRoute
   '/perangkat-ajar': typeof PerangkatAjarRoute
   '/profil': typeof ProfilRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/dashboard/pengguna': typeof AuthenticatedDashboardPenggunaRoute
+  '/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
+  '/dashboard': typeof AuthenticatedDashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/administrasi': typeof AdministrasiRoute
   '/anggota': typeof AnggotaRoute
   '/aspirasi': typeof AspirasiRoute
@@ -143,6 +192,11 @@ export interface FileRoutesById {
   '/masuk': typeof MasukRoute
   '/perangkat-ajar': typeof PerangkatAjarRoute
   '/profil': typeof ProfilRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRouteRouteWithChildren
+  '/_authenticated/dashboard/pengguna': typeof AuthenticatedDashboardPenggunaRoute
+  '/_authenticated/dashboard/profil': typeof AuthenticatedDashboardProfilRoute
+  '/_authenticated/dashboard/': typeof AuthenticatedDashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,6 +215,11 @@ export interface FileRouteTypes {
     | '/masuk'
     | '/perangkat-ajar'
     | '/profil'
+    | '/reset-password'
+    | '/dashboard'
+    | '/dashboard/pengguna'
+    | '/dashboard/profil'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,9 +236,14 @@ export interface FileRouteTypes {
     | '/masuk'
     | '/perangkat-ajar'
     | '/profil'
+    | '/reset-password'
+    | '/dashboard/pengguna'
+    | '/dashboard/profil'
+    | '/dashboard'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/administrasi'
     | '/anggota'
     | '/aspirasi'
@@ -193,10 +257,16 @@ export interface FileRouteTypes {
     | '/masuk'
     | '/perangkat-ajar'
     | '/profil'
+    | '/reset-password'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/dashboard/pengguna'
+    | '/_authenticated/dashboard/profil'
+    | '/_authenticated/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AdministrasiRoute: typeof AdministrasiRoute
   AnggotaRoute: typeof AnggotaRoute
   AspirasiRoute: typeof AspirasiRoute
@@ -210,6 +280,7 @@ export interface RootRouteChildren {
   MasukRoute: typeof MasukRoute
   PerangkatAjarRoute: typeof PerangkatAjarRoute
   ProfilRoute: typeof ProfilRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -219,6 +290,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/administrasi': {
@@ -312,11 +390,77 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfilRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard/': {
+      id: '/_authenticated/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof AuthenticatedDashboardIndexRouteImport
+      parentRoute: typeof AuthenticatedDashboardRouteRoute
+    }
+    '/_authenticated/dashboard/pengguna': {
+      id: '/_authenticated/dashboard/pengguna'
+      path: '/pengguna'
+      fullPath: '/dashboard/pengguna'
+      preLoaderRoute: typeof AuthenticatedDashboardPenggunaRouteImport
+      parentRoute: typeof AuthenticatedDashboardRouteRoute
+    }
+    '/_authenticated/dashboard/profil': {
+      id: '/_authenticated/dashboard/profil'
+      path: '/profil'
+      fullPath: '/dashboard/profil'
+      preLoaderRoute: typeof AuthenticatedDashboardProfilRouteImport
+      parentRoute: typeof AuthenticatedDashboardRouteRoute
+    }
   }
 }
 
+interface AuthenticatedDashboardRouteRouteChildren {
+  AuthenticatedDashboardPenggunaRoute: typeof AuthenticatedDashboardPenggunaRoute
+  AuthenticatedDashboardProfilRoute: typeof AuthenticatedDashboardProfilRoute
+  AuthenticatedDashboardIndexRoute: typeof AuthenticatedDashboardIndexRoute
+}
+
+const AuthenticatedDashboardRouteRouteChildren: AuthenticatedDashboardRouteRouteChildren =
+  {
+    AuthenticatedDashboardPenggunaRoute: AuthenticatedDashboardPenggunaRoute,
+    AuthenticatedDashboardProfilRoute: AuthenticatedDashboardProfilRoute,
+    AuthenticatedDashboardIndexRoute: AuthenticatedDashboardIndexRoute,
+  }
+
+const AuthenticatedDashboardRouteRouteWithChildren =
+  AuthenticatedDashboardRouteRoute._addFileChildren(
+    AuthenticatedDashboardRouteRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRouteRoute: typeof AuthenticatedDashboardRouteRouteWithChildren
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRouteRoute:
+    AuthenticatedDashboardRouteRouteWithChildren,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AdministrasiRoute: AdministrasiRoute,
   AnggotaRoute: AnggotaRoute,
   AspirasiRoute: AspirasiRoute,
@@ -330,6 +474,7 @@ const rootRouteChildren: RootRouteChildren = {
   MasukRoute: MasukRoute,
   PerangkatAjarRoute: PerangkatAjarRoute,
   ProfilRoute: ProfilRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

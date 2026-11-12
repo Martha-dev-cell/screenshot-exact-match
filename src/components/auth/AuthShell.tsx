@@ -18,9 +18,13 @@ export function AuthShell({ children }: { children: ReactNode }) {
           <p className="mt-2 text-sm uppercase tracking-[0.18em] text-navy-muted">
             {site.district} · {site.regency}
           </p>
-          <p className="mt-6 border-l-2 border-gold pl-4 text-lg text-navy-foreground/90">“{site.slogan}”</p>
+          <p className="mt-6 border-l-2 border-gold pl-4 text-lg text-navy-foreground/90">
+            “{site.slogan}”
+          </p>
         </div>
-        <p className="relative text-xs text-navy-muted">© {new Date().getFullYear()} {site.name}</p>
+        <p className="relative text-xs text-navy-muted">
+          © {new Date().getFullYear()} {site.name}
+        </p>
       </aside>
       <main className="flex items-center justify-center bg-surface px-4 py-12">
         <div className="w-full max-w-md">

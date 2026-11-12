@@ -9,23 +9,50 @@ import { PublicLayout } from "@/components/layout/PublicLayout";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/kegiatan")({
-  head: () => pageHead("Program dan Kegiatan", "Program kerja dan agenda kegiatan KKG Gugus 01 Kecamatan Bluto."),
+  head: () =>
+    pageHead(
+      "Program dan Kegiatan",
+      "Program kerja dan agenda kegiatan KKG Gugus 01 Kecamatan Bluto.",
+    ),
   component: KegiatanPage,
 });
 
 // Bidang program — sesuaikan dengan program kerja resmi KKG.
 const programs = [
-  { icon: RefreshCcw, title: "Pertemuan Rutin", desc: "Pertemuan berkala anggota untuk berbagi dan merefleksikan pembelajaran." },
-  { icon: GraduationCap, title: "Pengembangan Kompetensi", desc: "Lokakarya, pelatihan, dan bimbingan teknis bagi guru." },
-  { icon: Presentation, title: "Praktik Baik & Lesson Study", desc: "Kegiatan observasi dan berbagi praktik pembelajaran." },
-  { icon: Award, title: "Lomba & Apresiasi", desc: "Ajang prestasi guru dan murid di tingkat gugus." },
-  { icon: Users, title: "Kolaborasi Sekolah", desc: "Kerja sama antarsekolah dan mitra pendidikan." },
+  {
+    icon: RefreshCcw,
+    title: "Pertemuan Rutin",
+    desc: "Pertemuan berkala anggota untuk berbagi dan merefleksikan pembelajaran.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Pengembangan Kompetensi",
+    desc: "Lokakarya, pelatihan, dan bimbingan teknis bagi guru.",
+  },
+  {
+    icon: Presentation,
+    title: "Praktik Baik & Lesson Study",
+    desc: "Kegiatan observasi dan berbagi praktik pembelajaran.",
+  },
+  {
+    icon: Award,
+    title: "Lomba & Apresiasi",
+    desc: "Ajang prestasi guru dan murid di tingkat gugus.",
+  },
+  {
+    icon: Users,
+    title: "Kolaborasi Sekolah",
+    desc: "Kerja sama antarsekolah dan mitra pendidikan.",
+  },
 ];
 
 function KegiatanPage() {
   return (
     <PublicLayout>
-      <PageHeader path="/kegiatan" description="Rencana program kerja dan jadwal kegiatan KKG Gugus 01 sepanjang tahun ajaran." />
+      <PageHeader
+        path="/kegiatan"
+        description="Rencana program kerja dan jadwal kegiatan KKG Gugus 01 sepanjang tahun ajaran."
+      />
       <section className="py-14">
         <div className="container-page">
           <SectionHeading eyebrow="Program Kerja" title="Bidang Program" />

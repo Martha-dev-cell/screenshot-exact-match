@@ -8,14 +8,21 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/berita")({
-  head: () => pageHead("Berita dan Pengumuman", "Berita kegiatan dan pengumuman resmi KKG Gugus 01 Kecamatan Bluto."),
+  head: () =>
+    pageHead(
+      "Berita dan Pengumuman",
+      "Berita kegiatan dan pengumuman resmi KKG Gugus 01 Kecamatan Bluto.",
+    ),
   component: BeritaPage,
 });
 
 function BeritaPage() {
   return (
     <PublicLayout>
-      <PageHeader path="/berita" description="Informasi resmi, kabar kegiatan, dan pengumuman penting untuk seluruh anggota." />
+      <PageHeader
+        path="/berita"
+        description="Informasi resmi, kabar kegiatan, dan pengumuman penting untuk seluruh anggota."
+      />
       <section className="py-14">
         <div className="container-page">
           <Tabs defaultValue="pengumuman">

@@ -6,26 +6,47 @@ import { IntegrationNotice } from "@/components/common/IntegrationNotice";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/anggota")({
-  head: () => pageHead("Data Anggota", "Daftar guru dan sekolah anggota KKG Gugus 01 Kecamatan Bluto."),
+  head: () =>
+    pageHead("Data Anggota", "Daftar guru dan sekolah anggota KKG Gugus 01 Kecamatan Bluto."),
   component: AnggotaPage,
 });
 
 function AnggotaPage() {
   return (
     <PublicLayout>
-      <PageHeader path="/anggota" description="Direktori guru anggota KKG Gugus 01 beserta sekolah dan tugas mengajarnya." />
+      <PageHeader
+        path="/anggota"
+        description="Direktori guru anggota KKG Gugus 01 beserta sekolah dan tugas mengajarnya."
+      />
       <section className="py-14">
         <div className="container-page space-y-6">
           <IntegrationNotice />
           <div className="flex flex-col gap-3 rounded-xl border bg-card p-4 shadow-card md:flex-row">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-              <Input placeholder="Cari nama guru atau NIP…" className="h-11 pl-9" aria-label="Cari anggota" />
+              <Input
+                placeholder="Cari nama guru atau NIP…"
+                className="h-11 pl-9"
+                aria-label="Cari anggota"
+              />
             </div>
             <Select>
               <SelectTrigger className="h-11 md:w-56" aria-label="Filter sekolah">

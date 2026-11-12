@@ -10,7 +10,10 @@ import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/profil")({
   head: () =>
-    pageHead("Profil KKG", "Mengenal KKG Gugus 01 Kecamatan Bluto: tentang kami, visi, misi, dan struktur pengurus."),
+    pageHead(
+      "Profil KKG",
+      "Mengenal KKG Gugus 01 Kecamatan Bluto: tentang kami, visi, misi, dan struktur pengurus.",
+    ),
   component: ProfilPage,
 });
 
@@ -48,13 +51,13 @@ function ProfilPage() {
             <SectionHeading eyebrow="Tentang Kami" title="Wadah Belajar Bersama Guru SD" />
             <div className="space-y-4 leading-relaxed text-foreground/85">
               <p>
-                {site.name} merupakan forum kegiatan profesional bagi guru-guru sekolah dasar yang berada dalam
-                satu gugus. KKG menjadi tempat untuk merencanakan, melaksanakan, dan merefleksikan pembelajaran
-                secara bersama-sama.
+                {site.name} merupakan forum kegiatan profesional bagi guru-guru sekolah dasar yang
+                berada dalam satu gugus. KKG menjadi tempat untuk merencanakan, melaksanakan, dan
+                merefleksikan pembelajaran secara bersama-sama.
               </p>
               <p>
-                Melalui portal ini, seluruh informasi, dokumen, dan kegiatan KKG dapat diakses dengan mudah oleh
-                anggota kapan pun dan di mana pun.
+                Melalui portal ini, seluruh informasi, dokumen, dan kegiatan KKG dapat diakses
+                dengan mudah oleh anggota kapan pun dan di mana pun.
               </p>
             </div>
           </div>
@@ -65,7 +68,8 @@ function ProfilPage() {
                 <span className="text-sm font-bold uppercase tracking-[0.16em]">Visi</span>
               </div>
               <p className="font-display text-2xl leading-snug">
-                Terwujudnya guru yang bersatu, gemar berbagi, dan inovatif demi pendidikan dasar yang berkualitas.
+                Terwujudnya guru yang bersatu, gemar berbagi, dan inovatif demi pendidikan dasar
+                yang berkualitas.
               </p>
             </div>
             <div className="rounded-2xl border bg-card p-7 shadow-card">
@@ -101,7 +105,9 @@ function ProfilPage() {
                 <span className="mx-auto mb-3 flex size-16 items-center justify-center rounded-full bg-secondary text-primary/40">
                   <UserRound className="size-8" />
                 </span>
-                <p className="text-xs font-bold uppercase tracking-wide text-gold-foreground/70">{role}</p>
+                <p className="text-xs font-bold uppercase tracking-wide text-gold-foreground/70">
+                  {role}
+                </p>
                 <p className="mt-1 text-sm text-muted-foreground">Nama belum diisi</p>
               </div>
             ))}

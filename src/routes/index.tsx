@@ -121,7 +121,13 @@ function Stats() {
       <div className="container-page">
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
           {stats.map((s) => (
-            <StatCard key={s.label} icon={s.icon} label={s.label} value={null} hint="Menunggu data terhubung" />
+            <StatCard
+              key={s.label}
+              icon={s.icon}
+              label={s.label}
+              value={null}
+              hint="Menunggu data terhubung"
+            />
           ))}
         </div>
       </div>
@@ -145,14 +151,15 @@ function Welcome() {
           <Quote className="mb-4 size-10 text-gold" />
           <div className="space-y-4 text-[1.02rem] leading-relaxed text-foreground/85">
             <p>
-              Assalamu’alaikum warahmatullahi wabarakatuh. Selamat datang di Portal Digital KKG Gugus 01
-              Kecamatan Bluto. Portal ini kami hadirkan sebagai rumah bersama bagi seluruh guru untuk
-              berbagi informasi, berdiskusi, dan saling menguatkan dalam mengembangkan pembelajaran.
+              Assalamu’alaikum warahmatullahi wabarakatuh. Selamat datang di Portal Digital KKG
+              Gugus 01 Kecamatan Bluto. Portal ini kami hadirkan sebagai rumah bersama bagi seluruh
+              guru untuk berbagi informasi, berdiskusi, dan saling menguatkan dalam mengembangkan
+              pembelajaran.
             </p>
             <p>
               Melalui semangat bersatu, berbagi, dan berinovasi, mari kita jadikan KKG sebagai ruang
-              tumbuh yang nyata — tempat praktik baik dari satu kelas dapat menginspirasi kelas-kelas lain
-              di seluruh gugus.
+              tumbuh yang nyata — tempat praktik baik dari satu kelas dapat menginspirasi
+              kelas-kelas lain di seluruh gugus.
             </p>
           </div>
           <div className="mt-6 border-t pt-5">
@@ -220,11 +227,20 @@ function InfoColumn({
     <div className="flex flex-col rounded-2xl border bg-card p-5 shadow-card">
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-lg font-bold text-primary">{title}</h3>
-        <Link to={to} className="flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
+        <Link
+          to={to}
+          className="flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+        >
           Lihat semua <ArrowRight className="size-4" />
         </Link>
       </div>
-      <EmptyState compact className="flex-1" icon={emptyIcon} title={emptyTitle} description={emptyText} />
+      <EmptyState
+        compact
+        className="flex-1"
+        icon={emptyIcon}
+        title={emptyTitle}
+        description={emptyText}
+      />
     </div>
   );
 }
@@ -251,7 +267,9 @@ function QuickAccess() {
               </span>
               <span>
                 <span className="block font-bold text-foreground">{item.title}</span>
-                <span className="mt-1 block text-sm leading-snug text-muted-foreground">{item.description}</span>
+                <span className="mt-1 block text-sm leading-snug text-muted-foreground">
+                  {item.description}
+                </span>
               </span>
             </Link>
           ))}

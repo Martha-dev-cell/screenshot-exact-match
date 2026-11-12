@@ -9,20 +9,42 @@ import { PublicLayout } from "@/components/layout/PublicLayout";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/keuangan")({
-  head: () => pageHead("Laporan Keuangan", "Laporan keuangan KKG Gugus 01 Kecamatan Bluto yang dipublikasikan secara transparan."),
+  head: () =>
+    pageHead(
+      "Laporan Keuangan",
+      "Laporan keuangan KKG Gugus 01 Kecamatan Bluto yang dipublikasikan secara transparan.",
+    ),
   component: KeuanganPage,
 });
 
 function KeuanganPage() {
   return (
     <PublicLayout>
-      <PageHeader path="/keuangan" description="Wujud transparansi pengelolaan kas dan iuran anggota KKG Gugus 01." />
+      <PageHeader
+        path="/keuangan"
+        description="Wujud transparansi pengelolaan kas dan iuran anggota KKG Gugus 01."
+      />
       <section className="py-14">
         <div className="container-page space-y-10">
           <div className="grid gap-4 md:grid-cols-3">
-            <StatCard icon={Landmark} label="Saldo Kas" value={null} hint="Belum ada laporan dipublikasikan" />
-            <StatCard icon={ArrowDownCircle} label="Total Pemasukan" value={null} hint="Periode berjalan" />
-            <StatCard icon={ArrowUpCircle} label="Total Pengeluaran" value={null} hint="Periode berjalan" />
+            <StatCard
+              icon={Landmark}
+              label="Saldo Kas"
+              value={null}
+              hint="Belum ada laporan dipublikasikan"
+            />
+            <StatCard
+              icon={ArrowDownCircle}
+              label="Total Pemasukan"
+              value={null}
+              hint="Periode berjalan"
+            />
+            <StatCard
+              icon={ArrowUpCircle}
+              label="Total Pengeluaran"
+              value={null}
+              hint="Periode berjalan"
+            />
           </div>
           <div>
             <SectionHeading eyebrow="Arsip" title="Laporan Dipublikasikan" />
@@ -37,8 +59,8 @@ function KeuanganPage() {
             <div>
               <h3 className="text-lg font-bold">Prinsip Transparansi</h3>
               <p className="mt-1 text-sm leading-relaxed text-navy-muted">
-                Setiap pemasukan dan pengeluaran dicatat oleh Bendahara beserta bukti transaksi, lalu dipublikasikan
-                secara berkala kepada seluruh anggota.
+                Setiap pemasukan dan pengeluaran dicatat oleh Bendahara beserta bukti transaksi,
+                lalu dipublikasikan secara berkala kepada seluruh anggota.
               </p>
             </div>
           </div>

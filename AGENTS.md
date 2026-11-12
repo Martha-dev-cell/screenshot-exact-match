@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- Auth uses Supabase Auth on the client; the signed-in user + role comes from `currentUserQuery` (src/lib/auth/auth-service.ts), reading `profiles.role`. Why: one cached source shared by header, route guard and dashboards.
+- Member-only pages live under `src/routes/_authenticated/` (ssr: false, redirects to `/masuk`). Why: sessions live in browser storage, so SSR can't see them.
+- Role → module visibility is defined only in `src/lib/auth/roles.ts` and covered by `src/test/roles.test.ts`; real enforcement is the database RLS. Why: UI hiding is not security.
